@@ -2,8 +2,8 @@ package mate.academy.carsharingservice.validator;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-import org.springframework.beans.BeanUtils;
 import java.util.Objects;
+import org.springframework.beans.BeanUtils;
 
 public class FieldMatchValidator implements ConstraintValidator<FieldMatch, Object> {
     private String firstFieldName;
