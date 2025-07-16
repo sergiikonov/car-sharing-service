@@ -63,8 +63,8 @@ public class CarController {
             description = "Update car by id")
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/{id}")
-    public CarDto update(@PathVariable Long id, @
-            RequestBody @Valid CreateCarRequestDto requestDto) {
+    public CarDto update(@PathVariable Long id,
+            @RequestBody @Valid CreateCarRequestDto requestDto) {
         return carService.updateById(requestDto, id);
     }
 

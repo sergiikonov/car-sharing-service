@@ -41,4 +41,14 @@ public class CustomGlobalExceptionHandler {
     public ResponseEntity<String> handleRegistrationException(RegistrationException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
     }
+
+    @ExceptionHandler(UnavailableCarException.class)
+    public ResponseEntity<String> handleUnavailableCarException(UnavailableCarException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(NoRentalsFoundException.class)
+    public ResponseEntity<String> handleNoRentalsFoundException(NoRentalsFoundException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
 }
