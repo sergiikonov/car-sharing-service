@@ -13,6 +13,7 @@ import mate.academy.carsharingservice.model.Rental;
 import mate.academy.carsharingservice.model.User;
 import mate.academy.carsharingservice.repository.car.CarRepository;
 import mate.academy.carsharingservice.repository.rental.RentalRepository;
+import mate.academy.carsharingservice.service.notification.NotificationService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.AccessDeniedException;
@@ -27,6 +28,7 @@ public class RentalServiceImpl implements RentalService {
     private final RentalRepository rentalRepository;
     private final RentalMapper rentalMapper;
     private final CarRepository carRepository;
+    private final NotificationService notificationService;
 
     @Override
     public RentalResponseDto createRental(RentalRequestDto requestDto,
@@ -51,7 +53,27 @@ public class RentalServiceImpl implements RentalService {
                 );
         User user = (User) authentication.getPrincipal();
         Rental rental = rentalMapper.toModel(requestDto, car, user);
-        return rentalMapper.toDto(rentalRepository.save(rental));
+
+        Rental saved = rentalRepository.save(rental);
+        String message = String.format(
+                """
+                        New rental created!ID: #%d
+                        User: %s
+                        Email: %s
+                        Car: %s %s
+                        Rental date: %s
+                        Return date: %s
+                        """,
+                saved.getId(),
+                saved.getUser().getFirstName(),
+                saved.getUser().getEmail(),
+                saved.getCar().getModel(),
+                saved.getCar().getBrand(),
+                saved.getRentalDate(),
+                saved.getReturnDate()
+        );
+        notificationService.sendNotification(message);
+        return rentalMapper.toDto(saved);
     }
 
     @Transactional(readOnly = true)
