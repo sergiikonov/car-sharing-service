@@ -32,6 +32,11 @@ public class OverdueRentalChecker {
                 String message = "Rental " + rental.getId()
                         + " is still active, but not overdue yet.";
                 notificationService.sendNotification(message);
+            } else if (rental.getActualReturnDate() == null
+                    && rental.getReturnDate().isEqual(today)) {
+                String message = "Rental " + rental.getId()
+                        + " is still active, please don't forget to return car today.";
+                notificationService.sendNotification(message);
             }
         }
     }

@@ -51,4 +51,14 @@ public class CustomGlobalExceptionHandler {
     public ResponseEntity<String> handleNoRentalsFoundException(NoRentalsFoundException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<String> handleAccessDenied(AccessDeniedException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler(StripeProcessingException.class)
+    public ResponseEntity<String> handleStripeError(StripeProcessingException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }
