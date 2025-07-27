@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 import java.math.BigDecimal;
 import lombok.Data;
-import mate.academy.carsharingservice.model.Type;
+import mate.academy.carsharingservice.model.car.Type;
 
 @Data
 public class CreateCarRequestDto {

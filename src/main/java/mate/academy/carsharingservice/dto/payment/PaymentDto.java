@@ -1,7 +1,7 @@
 package mate.academy.carsharingservice.dto.payment;
 
 import java.math.BigDecimal;
-import mate.academy.carsharingservice.model.Status;
+import mate.academy.carsharingservice.model.payment.Status;
 
 public record PaymentDto(
         Long id,

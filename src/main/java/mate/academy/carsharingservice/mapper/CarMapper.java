@@ -3,7 +3,7 @@ package mate.academy.carsharingservice.mapper;
 import mate.academy.carsharingservice.config.MapperConfig;
 import mate.academy.carsharingservice.dto.car.CarDto;
 import mate.academy.carsharingservice.dto.car.CreateCarRequestDto;
-import mate.academy.carsharingservice.model.Car;
+import mate.academy.carsharingservice.model.car.Car;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;

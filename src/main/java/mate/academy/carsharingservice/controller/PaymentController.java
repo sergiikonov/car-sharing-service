@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import mate.academy.carsharingservice.dto.payment.CreatePaymentRequestDto;
 import mate.academy.carsharingservice.dto.payment.CreatePaymentResponseDto;
 import mate.academy.carsharingservice.dto.payment.PaymentDto;
-import mate.academy.carsharingservice.model.User;
+import mate.academy.carsharingservice.model.user.User;
 import mate.academy.carsharingservice.service.payment.PaymentService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -34,14 +34,16 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class PaymentController {
     private final PaymentService paymentService;
 
-    @PreAuthorize("hasAnyRole('CUSTOMER','MANAGER')")
+    @PreAuthorize("hasAnyRole('MANAGER','CUSTOMER')")
     @Operation(summary = "Get payments method",
             description = "Returns payments of customer or show all for manager")
     @GetMapping
-    public Page<PaymentDto> getPayments(@RequestParam(required = false) Long id,
+    public Page<PaymentDto> getPayments(@RequestParam(required = false) Long userId,
                                         Pageable pageable,
                                         Authentication authentication) {
-        return paymentService.getPaymentsById(id,(User) authentication.getPrincipal(), pageable);
+        return paymentService.getPaymentsById(
+                userId, (User) authentication.getPrincipal(), pageable
+        );
     }
 
     @PostMapping()

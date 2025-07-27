@@ -1,7 +1,7 @@
 package mate.academy.carsharingservice.mapper;
 
 import mate.academy.carsharingservice.dto.payment.PaymentDto;
-import mate.academy.carsharingservice.model.Payment;
+import mate.academy.carsharingservice.model.payment.Payment;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

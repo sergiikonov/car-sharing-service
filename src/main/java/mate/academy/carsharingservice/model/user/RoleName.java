@@ -1,4 +1,4 @@
-package mate.academy.carsharingservice.model;
+package mate.academy.carsharingservice.model.user;
 
 public enum RoleName {
     ROLE_CUSTOMER,

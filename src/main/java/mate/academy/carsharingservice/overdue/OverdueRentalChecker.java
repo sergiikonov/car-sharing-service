@@ -3,7 +3,7 @@ package mate.academy.carsharingservice.overdue;
 import java.time.LocalDate;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import mate.academy.carsharingservice.model.Rental;
+import mate.academy.carsharingservice.model.rental.Rental;
 import mate.academy.carsharingservice.repository.rental.RentalRepository;
 import mate.academy.carsharingservice.service.notification.TelegramNotificationService;
 import org.springframework.scheduling.annotation.Scheduled;

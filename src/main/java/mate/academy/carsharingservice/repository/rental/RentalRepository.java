@@ -1,7 +1,7 @@
 package mate.academy.carsharingservice.repository.rental;
 
 import java.util.Optional;
-import mate.academy.carsharingservice.model.Rental;
+import mate.academy.carsharingservice.model.rental.Rental;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;

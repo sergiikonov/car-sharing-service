@@ -1,7 +1,9 @@
-package mate.academy.carsharingservice.model;
+package mate.academy.carsharingservice.model.payment;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,34 +11,38 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import java.time.LocalDate;
+import java.math.BigDecimal;
 import lombok.Getter;
 import lombok.Setter;
+import mate.academy.carsharingservice.model.rental.Rental;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
 @Entity
-@Table(name = "rentals")
-@SQLDelete(sql = "UPDATE rentals SET is_deleted = true WHERE id = ?")
+@Table(name = "payments")
+@SQLDelete(sql = "UPDATE payments SET is_deleted = true WHERE id = ?")
 @SQLRestriction("is_deleted = false")
 @Getter
 @Setter
-public class Rental {
+public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private LocalDate rentalDate;
+    private Status status;
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private LocalDate returnDate;
-    @Column(nullable = true)
-    private LocalDate actualReturnDate;
+    private PaymentType type;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "car_id", nullable = false)
-    private Car car;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    @JoinColumn(name = "rental_id", nullable = false)
+    private Rental rental;
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String sessionUrl;
+    @Column(nullable = false)
+    private String sessionId;
+    @Column(nullable = false)
+    private BigDecimal amountToPay;
     @Column(nullable = false)
     private boolean isDeleted = false;
 }

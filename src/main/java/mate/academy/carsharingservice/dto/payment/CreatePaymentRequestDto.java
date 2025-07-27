@@ -1,7 +1,7 @@
 package mate.academy.carsharingservice.dto.payment;
 
 import jakarta.validation.constraints.NotNull;
-import mate.academy.carsharingservice.model.PaymentType;
+import mate.academy.carsharingservice.model.payment.PaymentType;
 
 public record CreatePaymentRequestDto(
         @NotNull

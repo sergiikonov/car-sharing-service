@@ -1,4 +1,4 @@
-package mate.academy.carsharingservice.model;
+package mate.academy.carsharingservice.model.car;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -1,0 +1,10 @@
+databaseChangeLog:
+    - changeSet:
+          id: 3
+          author: mate.academy
+          changes:
+              - renameColumn:
+                    tableName: cars
+                    oldColumnName: dailyFee
+                    newColumnName: daily_fee
+                    columnDataType: DECIMAL(38,2)

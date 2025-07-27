@@ -2,7 +2,7 @@ package mate.academy.carsharingservice.dto.car;
 
 import java.math.BigDecimal;
 import lombok.Data;
-import mate.academy.carsharingservice.model.Type;
+import mate.academy.carsharingservice.model.car.Type;
 
 @Data
 public class CarDto {

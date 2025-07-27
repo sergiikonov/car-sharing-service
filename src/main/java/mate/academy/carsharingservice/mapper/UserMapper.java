@@ -4,7 +4,7 @@ import mate.academy.carsharingservice.config.MapperConfig;
 import mate.academy.carsharingservice.dto.user.UpdateUserProfileRequestDto;
 import mate.academy.carsharingservice.dto.user.UserRegistrationRequestDto;
 import mate.academy.carsharingservice.dto.user.UserResponseDto;
-import mate.academy.carsharingservice.model.User;
+import mate.academy.carsharingservice.model.user.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;

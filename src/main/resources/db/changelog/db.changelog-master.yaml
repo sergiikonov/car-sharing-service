@@ -13,3 +13,5 @@ databaseChangeLog:
       file: db/changelog/changes/06-create-rentals-table.yaml
   - include:
       file: db/changelog/changes/07-create-payments-table.yaml
+  - include:
+      file: db/changelog/changes/08-fix-daily-fee.yaml

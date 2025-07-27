@@ -1,7 +1,7 @@
 package mate.academy.carsharingservice.repository.user;
 
 import java.util.Optional;
-import mate.academy.carsharingservice.model.User;
+import mate.academy.carsharingservice.model.user.User;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 
