@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/changes/01-create-cars-table.yaml
+  - include:
+      file: db/changelog/changes/02-create-users-table.yaml
+  - include:
+      file: db/changelog/changes/03-create-roles-table.yaml
+  - include:
+      file: db/changelog/changes/04-insert-roles.yaml
+  - include:
+      file: db/changelog/changes/05-fix-roles.yaml
+  - include:
+      file: db/changelog/changes/06-create-rentals-table.yaml
+  - include:
+      file: db/changelog/changes/07-create-payments-table.yaml
+  - include:
+      file: db/changelog/changes/08-fix-daily-fee.yaml

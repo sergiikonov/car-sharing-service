@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: mate.academy
+      changes:
+      - update:
+          tableName: roles
+          columns:
+            - column:
+                name: name
+                value: ROLE_CUSTOMER
+          where: name = 'CUSTOMER'
+      - update:
+          tableName: roles
+          columns:
+            - column:
+                name: name
+                value: ROLE_MANAGER
+          where: name = 'MANAGER'

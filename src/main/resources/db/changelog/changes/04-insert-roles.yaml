@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: mate.academy
+      changes:
+        - insert:
+              tableName: roles
+              columns:
+                - column:
+                    name: name
+                    value: CUSTOMER
+        - insert:
+              tableName: roles
+              columns:
+                - column:
+                    name: name
+                    value: MANAGER
