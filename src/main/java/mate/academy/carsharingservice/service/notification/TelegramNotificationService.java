@@ -1,7 +1,8 @@
 package mate.academy.carsharingservice.service.notification;
 
-import io.github.cdimascio.dotenv.Dotenv;
+import jakarta.annotation.PostConstruct;
 import lombok.SneakyThrows;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.telegram.telegrambots.client.okhttp.OkHttpTelegramClient;
@@ -11,21 +12,25 @@ import org.telegram.telegrambots.meta.generics.TelegramClient;
 @Service
 @Transactional(readOnly = true)
 public class TelegramNotificationService implements NotificationService {
-    private final TelegramClient telegramClient;
+    private TelegramClient telegramClient;
 
-    public TelegramNotificationService() {
-        this.telegramClient = new OkHttpTelegramClient(
-                Dotenv.load().get("TELEGRAM_BOT_TOKEN")
-        );
+    @Value("${telegram.bot.token}")
+    private String telegramBotToken;
+
+    @Value("${telegram.chat.id}")
+    private String chatId;
+
+    @PostConstruct
+    public void init() {
+        this.telegramClient = new OkHttpTelegramClient(telegramBotToken);
     }
 
     @SneakyThrows
     @Override
     public void sendNotification(String message) {
-        SendMessage sendMessage = SendMessage
-                .builder()
+        SendMessage sendMessage = SendMessage.builder()
                 .text(message)
-                .chatId(Dotenv.load().get("TELEGRAM_CHAT_ID"))
+                .chatId(chatId)
                 .build();
         telegramClient.execute(sendMessage);
     }

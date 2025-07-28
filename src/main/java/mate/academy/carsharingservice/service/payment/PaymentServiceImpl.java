@@ -4,7 +4,6 @@ import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.checkout.Session;
 import com.stripe.param.checkout.SessionCreateParams;
-import io.github.cdimascio.dotenv.Dotenv;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -26,6 +25,7 @@ import mate.academy.carsharingservice.model.user.User;
 import mate.academy.carsharingservice.repository.payment.PaymentRepository;
 import mate.academy.carsharingservice.repository.rental.RentalRepository;
 import mate.academy.carsharingservice.service.notification.NotificationService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -50,7 +50,8 @@ public class PaymentServiceImpl implements PaymentService {
     private final PaymentMapper paymentMapper;
     private final NotificationService notificationService;
 
-    private final String stripeApiKey = Dotenv.load().get("STRIPE_API_KEY");
+    @Value("${stripe.api.key}")
+    private String stripeApiKey;
 
     @Transactional(readOnly = true)
     @Override
